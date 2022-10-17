@@ -1,34 +1,57 @@
-import { ArrowDropDown, ArrowDropUp, DarkMode, Search } from '@mui/icons-material';
-import React from 'react';
+import {DarkMode} from '@mui/icons-material';
+import React, { useEffect } from 'react';
 import Logo from '../assets/logo.png';
 import { useState } from 'react';
+import {
+    Link
+  } from "react-router-dom";
 
 
 const Topbar = () => {
-    const [opened, setOpened] = useState(false);
+    const [theme, setTheme] = useState("light");
+
+    const handleChange = () => {
+        const body = document.querySelector('.app');
+        const top = document.querySelector('.topbar');
+        if(theme === "light") {
+            body.classList.remove('dark-theme');
+            top.style.background = "white";
+        } else {
+            body.classList.add('dark-theme');
+            top.style.background = "black";
+        }
+    }
+
+    const handleTheme= () => {
+        if(theme === "light") {
+            setTheme("dark");
+        } else setTheme("light");
+
+    }
+
+
+
+    useEffect(() => {
+        handleChange();
+    }, [theme])
     return (
-        <div className='topbar'>
-            <a href='/' className='logo'>
-                <img src={Logo}/>
-            </a>
+        <div className='topbar theme'>
+            
+            <Link to="/" className='logo'>
+                    <img src={Logo}/>
+            </Link> 
             <div className='navlinks'>
-                <a href='/'>Home</a>
-                <a href='/'>Products</a>
-                <a href='/'>Blogs</a>
-                <a href='/'>About</a>
+                <Link to="/" className='link'>Home</Link>
+                <Link to="/products" className='link'>Products</Link>
+                <Link to="/read" className='link'>Blogs</Link>
+                <Link to="/about" className='link'>About</Link>
             </div>
             <div className='search'>
-                <Search style={{
-                    flex: 2,
-                    color: 'grey'
-                }}/>
-                <input type="text" placeholder="Search..."/>
+                <input type="text" placeholder="Search"/>
             </div>
             <DarkMode style={{
-                color: 'orange'
-            }}/>
-            {!opened && <ArrowDropDown />}
-            {opened && <ArrowDropUp />}
+                color: "#bdbd07"
+            }}  onClick = {handleTheme}/>
 
         </div>
     );

@@ -3,7 +3,7 @@ import React from 'react';
 
 const Newsletter = () => {
     return (
-        <div className='newsletter'>
+        <div className='newsletter theme'>
             <h1>
                 Subscribe
             </h1>

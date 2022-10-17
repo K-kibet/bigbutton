@@ -7,6 +7,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(cors());
 
 const Blog = require('./models/blog');
+const Product = require('./models/product');
 
 const mongoose = require('mongoose');
 
@@ -70,6 +71,29 @@ app.get('/blogs/:id', (req, res) => {
         console.log(error);
     });
 });
+
+//get all products
+app.get('/products', (req, res) => {
+    Product.find()
+    .then(results => {
+        res.send(results);
+    })
+    .catch(error => {
+        console.log(error);
+    })
+})
+
+app.get('/products/:id', (req, res) => {
+    const id = req.params.id;
+
+    Product.findById(id)
+    .then(results => {
+        res.send(results);
+    })
+    .catch(error => {
+        console.log(error);
+    })
+})
 
 //404 page
 app.use((req, res) => {

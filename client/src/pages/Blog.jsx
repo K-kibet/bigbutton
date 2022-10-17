@@ -1,10 +1,8 @@
-import "./single.css";
-import Sidebar from "../../components/sidebar/Sidebar";
-import SinglePost from "../../components/singlePost/SinglePost";
+import SinglePost from "../components/SinglePost";
 
 export default function Blog() {
   return (
-    <div className="blog">
+    <div className="blog page">
       <SinglePost/>
     </div>
   );

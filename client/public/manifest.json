@@ -1,6 +1,8 @@
 {
+  "name": "Bigbutton",
   "short_name": "Bigbutton",
-  "name": "Technology company based in Kenya",
+  "description": "Technology company based in Kenya",
+  "version": "0.1.0",
   "icons": [
     {
       "src": "favicon.ico",
